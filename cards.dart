@@ -35,16 +35,14 @@ class Deck {
     });
   }
   
-  deal (int handSize) {
+  deal(int handSize) {
     var hand = cards.sublist(0, handSize);
     cards = cards.sublist(handSize);
     return hand;
   }
   
   removeCard(String suit, String rank){
-    cards.removeWhere((card){
-      return (card.suit == suit && card.rank == rank);
-    });
+    cards.removeWhere((card) => (card.suit == suit && card.rank == rank));
   }
 }
 
