@@ -1,6 +1,7 @@
 void main() {
   var deck = new Deck();
   deck.shuffle();
+  deck.removeCard('Diamonds', 'Ace');
   print(deck.deal(5));
   print(deck);
 }
@@ -38,6 +39,12 @@ class Deck {
     var hand = cards.sublist(0, handSize);
     cards = cards.sublist(handSize);
     return hand;
+  }
+  
+  removeCard(String suit, String rank){
+    cards.removeWhere((card){
+      return (card.suit == suit && card.rank == rank);
+    });
   }
 }
 
