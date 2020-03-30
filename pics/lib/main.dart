@@ -7,6 +7,12 @@ void main() {
   // Create a new text widget to show some text on the screen
   var app = MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print('Hi there!');
+          } ,
+          child: Icon(Icons.add),
+        ),
         appBar: AppBar(
           title: Text("Let's See Some Images!"),
         ),
