@@ -5,6 +5,7 @@ import 'package:http/http.dart' show get;
 import 'dart:convert';
 
 import 'models/image_model.dart';
+import 'widgets/image_list.dart';
 
 // Create a class that will be our custom widget
 // This class must extend the 'StatelessWidget' base class
@@ -17,11 +18,15 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   int counter = 0;
+  List<ImageModel> images = [];
 
   void fetchImage() async {
     counter ++;
-    var response = await get('https://jsonplaceholder.typicode.com/photos/500/$counter');
-    var imageModel = ImageModel.fromJson(json.decode(response.body));
+    final response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    final imageModel = ImageModel.fromJson(json.decode(response.body));
+    setState(() {
+      images.add(imageModel);
+    });
   }
   
   // Must define a 'build' method that returns
@@ -29,7 +34,7 @@ class AppState extends State<App> {
   Widget build(context){
     return MaterialApp(
       home: Scaffold(
-        body: Text('$counter'),
+        body: ImageList(images),
         floatingActionButton: FloatingActionButton(
           onPressed: fetchImage,
           child: Icon(Icons.add),
