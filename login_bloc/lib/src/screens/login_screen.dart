@@ -62,9 +62,9 @@ Widget submitButton(Bloc bloc) {
       return RaisedButton(
         child: Text('Log In'),
         color: Colors.blue,
-        onPressed: snapshot.hasData ? () {
-          print("Submitted");
-        } : null
+        onPressed: snapshot.hasData 
+        ? bloc.submit
+        : null
       );
     }
   );
