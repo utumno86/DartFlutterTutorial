@@ -44,7 +44,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       );
     boxAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        boxController.repeat();
+        boxController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        boxController.forward();
       }
     });
     boxController.forward();
