@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dart:math';
+
 import '../widgets/cat.dart';
 
 class Home extends StatefulWidget {
@@ -73,10 +75,17 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   Widget buildLeftFlap(){
-    return Container(
-      height: 10.0,
-      width: 125.0,
-      color: Colors.red
+    return Positioned(
+      left: 3.0,
+      child: Transform.rotate(
+        child: Container(
+          height: 10.0,
+          width: 125.0,
+          color: Colors.brown
+        ),
+        angle: pi * 0.6,
+        alignment: Alignment.topLeft,
+      ),
     );
   }
 
