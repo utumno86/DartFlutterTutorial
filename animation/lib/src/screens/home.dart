@@ -11,6 +11,8 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> with TickerProviderStateMixin {
   Animation<double> catAnimation;
   AnimationController catController;
+  Animation<double> boxAnimation;
+  AnimationController boxController;
 
   initState() {
     super.initState();
@@ -27,6 +29,25 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
           curve: Curves.easeIn,
         ),
       );
+
+    boxController = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+
+    boxAnimation = Tween(begin: 0.0, end: 3.14)
+      .animate(
+        CurvedAnimation(
+          parent: boxController,
+          curve: Curves.linear,
+        ),
+      );
+    boxAnimation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        boxController.repeat();
+      }
+    });
+    boxController.forward();
   }
 
   Widget build(context) {
@@ -76,15 +97,21 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
 
   Widget buildLeftFlap(){
     return Positioned(
-      left: 3.0,
-      child: Transform.rotate(
-        child: Container(
-          height: 10.0,
-          width: 125.0,
-          color: Colors.brown
-        ),
-        angle: pi * 0.6,
-        alignment: Alignment.topLeft,
+      child: AnimatedBuilder(
+        animation: boxAnimation,
+        child: 
+          Container(
+            height: 10.0,
+            width: 125.0,
+            color: Colors.brown
+          ),
+        builder: (context, child) {
+          return  Transform.rotate(
+            child: child,
+            angle: boxAnimation.value,
+            alignment: Alignment.topLeft
+          );
+        }
       ),
     );
   }
