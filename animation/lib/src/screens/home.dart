@@ -39,7 +39,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       .animate(
         CurvedAnimation(
           parent: boxController,
-          curve: Curves.linear,
+          curve: Curves.easeInOut,
         ),
       );
     boxAnimation.addStatusListener((status) {
