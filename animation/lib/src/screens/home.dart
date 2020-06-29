@@ -35,7 +35,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    boxAnimation = Tween(begin: 0.0, end: 3.14)
+    boxAnimation = Tween(begin: pi * 0.6 , end: pi * 0.65)
       .animate(
         CurvedAnimation(
           parent: boxController,
