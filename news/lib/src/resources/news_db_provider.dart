@@ -3,7 +3,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 import 'dart:io';
-import 'dart:async';
 
 import '../models/item_model.dart';
 
@@ -47,5 +46,9 @@ class NewsDbProvider {
       return ItemModel.fromDb(maps.first);
     }
     return null;
+  }
+
+  addItem(ItemModel item) {
+    return db.insert("Items", item.toMapForDb());
   }
 }
