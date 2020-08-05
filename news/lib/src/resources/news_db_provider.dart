@@ -11,6 +11,10 @@ import 'repository.dart';
 class NewsDbProvider implements Source, Cache {
   Database db;
 
+  NewsDbProvider() {
+    init();
+  }
+
   Future<List<int>> fetchTopIds() {
     // TODO: implement fetchTopIds
     throw UnimplementedError();
@@ -59,3 +63,5 @@ class NewsDbProvider implements Source, Cache {
     return db.insert("Items", item.toMapForDb());
   }
 }
+
+final newsDbProvider = NewsDbProvider();
