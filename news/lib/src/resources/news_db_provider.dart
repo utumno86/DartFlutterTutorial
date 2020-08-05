@@ -8,7 +8,7 @@ import 'package:path/path.dart';
 import '../models/item_model.dart';
 import 'repository.dart';
 
-class NewsDbProvider implements Source {
+class NewsDbProvider implements Source, Cache {
   Database db;
 
   Future<List<int>> fetchTopIds() {
