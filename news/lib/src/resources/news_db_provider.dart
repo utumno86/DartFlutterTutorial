@@ -6,9 +6,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 import '../models/item_model.dart';
+import 'repository.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source {
   Database db;
+
+  Future<List<int>> fetchTopIds() {
+    // TODO: implement fetchTopIds
+    throw UnimplementedError();
+  }
 
   void init() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
